@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Time Log</title>
+    <link rel="stylesheet" href="styles2.css">
+    <style>
+        table {
+            width: 90%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            color: white;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 10px;
+            text-align: center;
+        }
+        input {
+            width: 80%;
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color:white;">TIME LOG</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Check-in Time</th>
+                <th>Check-out Time</th>
+                <th>Hours Worked</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Samuel</td><td><input type="time" onchange="calcular(this)" /></td><td><input type="time" onchange="calcular(this)" /></td><td class="resultado"></td></tr>
+            <tr><td>Leonardo</td><td><input type="time" onchange="calcular(this)" /></td><td><input type="time" onchange="calcular(this)" /></td><td class="resultado"></td></tr>
+            <tr><td>Javier</td><td><input type="time" onchange="calcular(this)" /></td><td><input type="time" onchange="calcular(this)" /></td><td class="resultado"></td></tr>
+            <tr><td>Marta</td><td><input type="time" onchange="calcular(this)" /></td><td><input type="time" onchange="calcular(this)" /></td><td class="resultado"></td></tr>
+            <tr><td>Álvaro</td><td><input type="time" onchange="calcular(this)" /></td><td><input type="time" onchange="calcular(this)" /></td><td class="resultado"></td></tr>
+        </tbody>
+    </table>
+    <br />
+    <a href="index.html">🔗HOME</a>
+
+<script>
+    function calcular(elem) {
+        const fila = elem.parentElement.parentElement;
+        const entrada = fila.cells[1].querySelector("input").value;
+        const salida = fila.cells[2].querySelector("input").value;
+        const resultado = fila.cells[3];
+
+        if (entrada && salida) {
+        const [h1, m1] = entrada.split(":").map(Number);
+        const [h2, m2] = salida.split(":").map(Number);
+        let horas = h2 - h1;
+        let minutos = m2 - m1;
+
+        if (minutos < 0) {
+            minutos += 60;
+            horas -= 1;
+        }
+
+        if (horas < 0) {
+            resultado.textContent = "Horario inválido";
+        } else {
+            resultado.textContent = `${horas}h ${minutos}min`;
+        }
+        }
+    }
+</script>
+</body>
+</html>

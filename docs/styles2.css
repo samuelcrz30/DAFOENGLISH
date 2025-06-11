@@ -1,0 +1,39 @@
+body {
+    background-color: #3d3b3b;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.box {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    background-color: #444;
+}
+
+
+a{
+    color: #ffffff;
+    font-size: 30px;
+}
+
+a:hover{
+    color: #e84624;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+a:visited{
+    text-decoration: none;
+}
